@@ -1,28 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+      <!-- click, set var -->
+      <button
+        type="button"
+        class="btn"
+        @click="showModal"
+      >
+        Open Modal!
+      </button>
+
+      <!-- v show if -->
+      <!-- click, set var -->
+      <PopUp
+        v-show="isModalVisible"
+        @close="closeModal"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PopUp from './components/PopUp.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    PopUp
+  },
+  // data: later method changes
+  data () {
+    return {
+      isModalVisible: false,
+    };
+  },
+  // method list
+  methods: {
+    // make visible true
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      // make visible false
+      this.isModalVisible = false;
+    }
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
